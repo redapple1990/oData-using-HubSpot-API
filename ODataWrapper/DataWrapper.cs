@@ -11,11 +11,23 @@ namespace ODataWrapper
             var serviceRoot = "https://services.odata.org/V3/Northwind/Northwind.svc";
             var context = new NorthwindEntities(new Uri(serviceRoot));
 
-            IEnumerable<Order> orders = context.Orders;
-            foreach (var o in orders)
+            var test = context.Orders;
+            IAsyncResult resultOrder = test.BeginExecute((res) =>
             {
-                Console.WriteLine("{0} {1}", o.OrderID, o.ShipRegion);
+                Console.WriteLine(res);
+            }, null);
+
+            IEnumerable<Order> order = test.EndExecute(resultOrder);
+
+            foreach(var o in order)
+            {
+                Console.WriteLine(o.CustomerID);
             }
+        }
+
+        public void GetOrderResponse()
+        {
+
         }
     }
 }
