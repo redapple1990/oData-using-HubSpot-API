@@ -8,6 +8,9 @@ namespace ClientDataWrapper
         {
             var dataWrapper = new ODataWrapper.DataWrapper();
             dataWrapper.GetOrderInfo();
+
+            var hubSopClient = new ODataWrapper.HubspotClientODataWrapper();
+            hubSopClient.CheckCompany();
         }
     }
 }

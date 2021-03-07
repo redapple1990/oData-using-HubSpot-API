@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\HubSpot\HubSpot.NET\HubSpot.NET\HubSpot.NET.csproj" />
     <ProjectReference Include="..\ODataWrapper\ODataWrapper.csproj" />
   </ItemGroup>
 

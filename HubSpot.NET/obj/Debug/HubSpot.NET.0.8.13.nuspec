@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>HubSpot.NET</id>
+    <version>0.8.13</version>
+    <authors>HubSpot.NET</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/hubspot-net/HubSpot.NET/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/hubspot-net/HubSpot.NET</projectUrl>
+    <description>C# .NET client library targeting the HubSpot APIs.</description>
+    <releaseNotes>0.8.13</releaseNotes>
+    <copyright>HubSpot.NET</copyright>
+    <tags>hubspot api wrapper c# contact company deal engagement properties crm</tags>
+    <repository url="https://github.com/hubspot-net/HubSpot.NET.git" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+        <dependency id="RestSharp" version="106.6.9" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.CSharp" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+        <dependency id="RestSharp" version="106.6.9" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="E:\Personal\.NetCore\oData-using-HubSpot-API\HubSpot.NET\bin\Debug\net461\HubSpot.NET.dll" target="lib\net461\HubSpot.NET.dll" />
+    <file src="E:\Personal\.NetCore\oData-using-HubSpot-API\HubSpot.NET\bin\Debug\netstandard2.0\HubSpot.NET.dll" target="lib\netstandard2.0\HubSpot.NET.dll" />
+  </files>
+</package>
