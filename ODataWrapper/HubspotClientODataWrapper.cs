@@ -14,6 +14,58 @@ namespace ODataWrapper
             HubSpotApi api = new HubSpotApi("ApiKey");
             testcompany(api);
         }
+
+        public CompanySearchResultModel<CompanyHubSpotModel> GetCompany()
+        {
+            HubSpotApi api = new HubSpotApi("ApiKey");
+            return GetCompanyByDomain(api);
+        }
+
+        public CompanyListHubSpotModel<CompanyHubSpotModel> GetCompanyByQuery(List<string> lst)
+        {
+            HubSpotApi api = new HubSpotApi("ApiKey");
+            return GetCompanyMoreByQuery(api,lst);
+        }
+
+        private CompanySearchResultModel<CompanyHubSpotModel> GetCompanyByDomain(HubSpotApi api)
+        {
+            var companies = api.Company.GetByDomain("squaredup.com", new CompanySearchByDomain()
+            {
+                Limit = 10
+            });
+
+            return companies;
+        }
+
+
+        private CompanyListHubSpotModel<CompanyHubSpotModel> GetCompanyMoreByQuery(HubSpotApi api,List<string> lst)
+        {
+        //    [DataMember(Name = "companyId")]
+        //    [IgnoreDataMember]
+        //    public long? Id { get; set; }
+        //    [DataMember(Name = "name")]
+        //    public string Name { get; set; }
+        //    [DataMember(Name = "domain")]
+        //    public string Domain { get; set; }
+        //    [DataMember(Name = "website")]
+        //    public string Website { get; set; }
+        //    [DataMember(Name = "description")]
+        //    public string Description { get; set; }
+        //    [DataMember(Name = "country")]
+        //    public string Country { get; set; }
+        //public bool IsNameValue { get; }
+
+            //List<string> lstProperties = new List<string>();
+            //lstProperties.Add("Name");
+
+            ListRequestOptions lstRequestOptions = new ListRequestOptions();
+            lstRequestOptions.PropertiesToInclude = lst;
+            
+            var companies = api.Company.List(lstRequestOptions);
+
+            return companies;
+        }
+
         private void testcompany(HubSpotApi api)
         {
             try
@@ -26,7 +78,6 @@ namespace ODataWrapper
                 Console.WriteLine("Companies tests failed!");
                 Console.WriteLine(ex.ToString());
             }
-
         }
 
         private static void Tests(HubSpotApi api)
