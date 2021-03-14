@@ -21,10 +21,10 @@ namespace ODataWrapper
             return GetCompanyByDomain(api);
         }
 
-        public CompanyListHubSpotModel<CompanyHubSpotModel> GetCompanyByQuery(List<string> lst)
+        public CompanyListHubSpotModel<CompanyHubSpotModel> GetCompanyByQuery()
         {
             HubSpotApi api = new HubSpotApi("ApiKey");
-            return GetCompanyMoreByQuery(api,lst);
+            return GetCompanyMoreByQuery(api);
         }
 
         private CompanySearchResultModel<CompanyHubSpotModel> GetCompanyByDomain(HubSpotApi api)
@@ -38,28 +38,13 @@ namespace ODataWrapper
         }
 
 
-        private CompanyListHubSpotModel<CompanyHubSpotModel> GetCompanyMoreByQuery(HubSpotApi api,List<string> lst)
+        private CompanyListHubSpotModel<CompanyHubSpotModel> GetCompanyMoreByQuery(HubSpotApi api)
         {
-        //    [DataMember(Name = "companyId")]
-        //    [IgnoreDataMember]
-        //    public long? Id { get; set; }
-        //    [DataMember(Name = "name")]
-        //    public string Name { get; set; }
-        //    [DataMember(Name = "domain")]
-        //    public string Domain { get; set; }
-        //    [DataMember(Name = "website")]
-        //    public string Website { get; set; }
-        //    [DataMember(Name = "description")]
-        //    public string Description { get; set; }
-        //    [DataMember(Name = "country")]
-        //    public string Country { get; set; }
-        //public bool IsNameValue { get; }
-
-            //List<string> lstProperties = new List<string>();
-            //lstProperties.Add("Name");
+            List<string> lstProperties = new List<string>();
+            lstProperties.Add("Name");
 
             ListRequestOptions lstRequestOptions = new ListRequestOptions();
-            lstRequestOptions.PropertiesToInclude = lst;
+            lstRequestOptions.PropertiesToInclude = lstProperties;
             
             var companies = api.Company.List(lstRequestOptions);
 
